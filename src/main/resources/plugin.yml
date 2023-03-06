@@ -1,0 +1,18 @@
+name: BlockLimiter
+version: '${project.version}'
+main: saber.blocklimiter.BlockLimiter
+api-version: 1.19
+authors: [ Saber ]
+description: Limits the number of a block can be in a chunk
+website: https://github.com/SaberSupe
+commands:
+  BlockLimiter:
+    description: allows the user to reload the config or recount the chunk
+
+permissions:
+  blocklimiter.command:
+    description: Allows the player to use the command
+    default: op
+  blocklimiter.bypass:
+    description: Allows the player to place blocks in excess of the limit
+    default: op

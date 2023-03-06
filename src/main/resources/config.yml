@@ -1,0 +1,25 @@
+# Block limits in form Material:Limit
+LimitedBlocks:
+  - "CHEST:1000"
+  - "REDSTONE_WIRE:1000"
+  - "HOPPER:1000"
+
+#Messages
+msgNotPlayer: "Must be a player to initiate chunk recount"
+msgNoPerms: "&cYou do not have permission to run this command"
+msgReloaded: "&aConfig values successfully reloaded"
+msgRecountStarted: "&aRecount initiated"
+
+#Recount complete {0} - Material recounted
+msgRecountComplete: "&aRecount completed for {0}"
+
+# {0} - The block type in lower case
+# {1} - The limit for that block type
+# {2} - The current amount in the chunk
+msgChunkLimitReached: "&cThis chunk has reached the limit for {0}. {2} placed with a limit of {1}"
+
+#Proper Usage
+msgProperUsage:
+  - "&cProper Usage"
+  - "&c/BlockLimiter reload - Reloads the config"
+  - "&c/BlockLimiter recount - Recounts all the tracked blocks in the chunk"
