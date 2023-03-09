@@ -31,11 +31,12 @@ public final class BlockLimiter extends JavaPlugin {
         //Register listener
         getServer().getPluginManager().registerEvents(new BlockListener(this), this);
 
+
         //Register Command
         getCommand("BlockLimiter").setExecutor(new BlockLimiterCommand(this));
 
         //Log successful launch
-        this.getLogger().log(Level.INFO, "BlockLimiter loaded Successfully");
+        getLogger().log(Level.INFO, "BlockLimiter loaded Successfully");
     }
 
     public void loadConfigValues(){
@@ -48,8 +49,13 @@ public final class BlockLimiter extends JavaPlugin {
 
         for (String x : configList){
             String[] split = x.split(":");
-            TrackedBlocks.add(split[0]);
-            Limits.put(split[0],Integer.parseInt(split[1]));
+            if (Material.getMaterial(split[0]) == null){
+                getLogger().log(Level.INFO, x + " not recognized, will not be tracked");
+            }
+            else {
+                TrackedBlocks.add(split[0]);
+                Limits.put(split[0], Integer.parseInt(split[1]));
+            }
         }
     }
 
@@ -83,7 +89,6 @@ public final class BlockLimiter extends JavaPlugin {
         Bukkit.getScheduler().runTaskAsynchronously(this, new Runnable() {
             @Override
             public void run() {
-
                 //Loop through every block in the chunk checking for the counted type
                 int count = 0;
                 for (int x = 0; x < 16; x++){
